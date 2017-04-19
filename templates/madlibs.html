@@ -6,8 +6,5 @@
 
 <h2>Welcome to Madlib Game</h2>
 <p>There once was a <span> {{ color }} {{ noun }} </span>sitting in the Hackbright Lab.
-When <span>{{ person }}</span> went to pick it up, it burst into flames in a totally <span>
-{% for adjective in adjectives %}
-     {{ adjective }}
-     {% endfor %} </span> way.</p>
+When <span>{{ person }}</span> went to pick it up, it burst into flames in a totally <span> {{ adjectives[0] }}, {{ adjectives[1] }}</span> way.</p>
 {% endblock %}

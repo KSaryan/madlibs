@@ -4,7 +4,16 @@
 
 {% block content %}
 
-<h2> Hi {{ person }}! I think you're {% for compliment in compliments %}  {{ compliment }} {% endfor %}.</h2>
+<h2> Hi {{ person }}! I think you're 
+    {% for compliment in compliments %}
+        {% if compliments.index(compliment) == compliments|length-1 %}
+          and {{ compliment }}
+        {% else %}
+            {{ compliment }},
+        {% endif %}  
+        
+    {% endfor %}.</h2>
+
 <h2>Would you like to play a game?</h2>
 <form action="/game">
     <input type="radio" name="yesno" value="yes">Yes

@@ -1,15 +1,13 @@
-<!doctype html>
-<html>
-<head>
-  <title>Madlib Game</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-<h1>Welcome to Madlib Game</h1>
-<p>There once was a {{ color }} {{ noun }} sitting in the Hackbright Lab.
-When {{ person }} went to pick it up, it burst into flames in a totally 
+{% block title %} Madlib Game {% endblock %}
+
+{% block content %}
+
+<h2>Welcome to Madlib Game</h2>
+<p>There once was a <span> {{ color }} {{ noun }} </span>sitting in the Hackbright Lab.
+When <span>{{ person }}</span> went to pick it up, it burst into flames in a totally <span>
 {% for adjective in adjectives %}
      {{ adjective }}
-     {% endfor %} way.</p>
-</body>
-</html>
+     {% endfor %} </span> way.</p>
+{% endblock %}

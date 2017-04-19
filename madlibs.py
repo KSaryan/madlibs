@@ -49,8 +49,8 @@ def show_madlib_form():
 
     if answer == "no":
         return render_template("goodbye.html")
-    else:
-        return render_template("game.html")
+
+    return render_template("game.html")
 
 
 @app.route('/madlib')
@@ -61,10 +61,8 @@ def show_madlib():
     adjectives = request.args.getlist("adjective")
     noun = request.args.get("noun")
 
-    # for i, adjective in enumerate(adjectives):
-    #     i = adjective
 
-    return render_template("madlibs.html",
+    return render_template(choice(["madlibs.html", "madlibs2.html"]),
                            person=person,
                            color=color,
                            adjectives=adjectives,

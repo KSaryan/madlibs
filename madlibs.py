@@ -53,21 +53,28 @@ def show_madlib_form():
     return render_template("game.html")
 
 
-@app.route('/madlib')
+@app.route('/madlib', methods=["POST", "GET"])
 def show_madlib():
 
-    person = request.args.get("person")
-    color = request.args.get("color")
-    adjectives = request.args.getlist("adjective")
-    noun = request.args.get("noun")
+    # person = request.args.get("person")
+    # color = request.args.get("color")
+    # adjectives = request.args.getlist("adjective")
+    # noun = request.args.get("noun")
 
+    person = request.form.get("person")
+    color = request.form.get("color")
+    adjectives = request.form.getlist("adjective")
+    noun = request.form.get("noun")
 
-    return render_template(choice(["madlibs.html", "madlibs2.html"]),
-                           person=person,
-                           color=color,
-                           adjectives=adjectives,
-                           noun=noun)
-
+    # if the method is POST, return this:
+    if request.method =="POST":
+      return render_template(choice(["madlibs.html", "madlibs2.html"]),
+                             person=person,
+                             color=color,
+                             adjectives=adjectives,
+                             noun=noun)
+    else:  # else, return some nice message saying to go to /game first
+      return render_template("method-error.html")
 
 if __name__ == '__main__':
     # Setting debug=True gives us error messages in the browser and also

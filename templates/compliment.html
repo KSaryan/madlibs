@@ -1,15 +1,16 @@
-<!doctype html>
-<html>
-<head>
-  <title>A Compliment</title>
-</head>
-<body>
-    Hi {{ person }}! I think you're {{ compliment }}!
-    <p>Would you like to play a game?</p>
-    <form action="/game">
-        <input type="radio" name="yesno" value="yes">Yes
-        <input type="radio" name="yesno" value="no">No
-    <input type="submit" name="submit">
-    </form>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %} Madlib Game {% endblock %}
+
+{% block content %}
+
+<h2> Hi {{ person }}! I think you're {% for compliment in compliments %}  {{ compliment }} {% endfor %}.</h2>
+<h2>Would you like to play a game?</h2>
+<form action="/game">
+    <input type="radio" name="yesno" value="yes">Yes
+    <input type="radio" name="yesno" value="no">No
+<input type="submit" name="submit">
+</form>
+<br>
+
+{% endblock %}
